@@ -1,3 +1,14 @@
 body {
     text-align: center;
 }
+
+.lives {
+  display: inline;
+  float: center;
+  padding-right: 50px;
+}
+
+.score {
+  display: inline;
+  float: center;
+}

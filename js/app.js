@@ -46,7 +46,6 @@ Enemy.prototype.update = function(dt) {
     if(this.y-80 < player.y && this.y+80 > player.y) {
         if(this.x-70 < player.x && this.x+70 > player.x) {
             playerDead();
-            console.log(life);
         };
     };
 };
@@ -115,7 +114,6 @@ Player.prototype.update = function(dt) {
 // this.x += this.speed *dt;
 if(player.y <= 50){
     reachWater();
-    console.log(score);
     }
 };
 
@@ -150,6 +148,7 @@ new EnemyFast(),
 new EnemyBack(),
 new EnemyFastest()
 ];
+
 // Place the player object in a variable called player
 var player = new Player();
 
@@ -175,9 +174,19 @@ function resetPlayerPosition(){
 function playerDead(){
     resetPlayerPosition();
     life--
+    var element = document.getElementById("lives");
+    element.innerHTML = "Lives: "+life;
+    if(life<0) {gameOver();}
 }
 //replace player and add point when player reaches water
 function reachWater(){
     resetPlayerPosition();
     score++
+    var element = document.getElementById("score");
+    element.innerHTML = "Score: "+score;
+}
+//Reset game when lives reaches 0
+function gameOver() {
+    allEnemies.length = 0;
+    lives=3;
 }

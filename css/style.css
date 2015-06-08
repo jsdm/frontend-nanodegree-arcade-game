@@ -2,13 +2,13 @@ body {
     text-align: center;
 }
 
-.lives {
+#lives {
   display: inline;
   float: center;
   padding-right: 50px;
 }
 
-.score {
+#score {
   display: inline;
   float: center;
 }

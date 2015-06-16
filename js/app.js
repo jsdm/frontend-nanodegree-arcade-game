@@ -1,5 +1,6 @@
 var life = 3;
 var score = 0;
+var gameOn = true;
 //Global randomNumber generator to use in the rest of the progra
 function randomNumber(min, max){
     return Math.round( Math.random() * (max - min) + min);
@@ -124,19 +125,19 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     switch (key) {
         case 'left':
-            if(this.x>0) this.x-=100;
+            if(this.x>0 && gameOn) this.x-=100;
             break;
 
         case 'up':
-            if(this.y>0) this.y -= 83;
+            if(this.y>0 && gameOn) this.y -= 83;
             break;
 
         case 'right':
-            if(this.x<350) this.x += 100;
+            if(this.x<350 && gameOn) this.x += 100;
             break;
 
         case 'down':
-            if(this.y<475) this.y += 83;
+            if(this.y<475 && gameOn) this.y += 83;
             break;
     }
 };
@@ -172,21 +173,46 @@ function resetPlayerPosition(){
 }
 //Reset player position and subtract a life when player touches enemies
 function playerDead(){
-    resetPlayerPosition();
-    life--
-    var element = document.getElementById("lives");
-    element.innerHTML = "Lives: "+life;
     if(life<0) {gameOver();}
+    resetPlayerPosition();
+    screenLife(life);
+    life--
 }
 //replace player and add point when player reaches water
 function reachWater(){
     resetPlayerPosition();
     score++
-    var element = document.getElementById("score");
-    element.innerHTML = "Score: "+score;
+    screenScore(score);
 }
 //Reset game when lives reaches 0
 function gameOver() {
     allEnemies.length = 0;
-    lives=3;
+    life=3;
+    gameOn = false;
+}
+function gameReset() {
+    enemyY = [60, 143, 226, 309];
+    randEnemyArraY.length = 0;
+    randEnemyY();
+    allEnemies = [
+    new Enemy(),
+    new EnemyFast(),
+    new EnemyBack(),
+    new EnemyFastest()
+    ];
+    resetPlayerPosition();
+    gameOn = true;
+    life = 3;
+    score = 0;
+    screenLife(life);
+    screenScore(score);
+}
+// document.getElementById("reset").onclick = gameReset();
+function screenLife(life){
+    var element = document.getElementById("lives");
+    element.innerHTML = "Lives: "+life;
+}
+function screenScore(score) {
+    var element = document.getElementById("score");
+    element.innerHTML = "Score: "+score;
 }

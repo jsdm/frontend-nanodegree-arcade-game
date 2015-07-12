@@ -1,3 +1,4 @@
+//setting global variables for use in the game
 var life = 3;
 var score = 0;
 var gameOn = true;
@@ -108,11 +109,9 @@ var Player = function() {
     //placement
     this.x = 200;
     this.y = 475;
-    // this.speed = 400;
     this.alive = true;
 };
 Player.prototype.update = function(dt) {
-// this.x += this.speed *dt;
 if(player.y <= 50){
     reachWater();
     }
@@ -163,7 +162,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
 //player start position
@@ -190,6 +188,7 @@ function gameOver() {
     life=3;
     gameOn = false;
 }
+//Function to use for resetting the game when clicking the reset button
 function gameReset() {
     enemyY = [60, 143, 226, 309];
     randEnemyArraY.length = 0;
@@ -207,11 +206,12 @@ function gameReset() {
     screenLife(life);
     screenScore(score);
 }
-// document.getElementById("reset").onclick = gameReset();
+//Update the life counter
 function screenLife(life){
     var element = document.getElementById("lives");
     element.innerHTML = "Lives: "+life;
 }
+//Update the score counter
 function screenScore(score) {
     var element = document.getElementById("score");
     element.innerHTML = "Score: "+score;

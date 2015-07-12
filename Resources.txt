@@ -1,0 +1,6 @@
+Resources used in order to complete the project:
+www.stackoverflow.com
+https://github.com/NDNewell/frontend-nanodegree-arcade-game
+https://github.com/alexanderverge/frontend-nanodegree-arcade-game
+https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+and of course www.udacity.com :)

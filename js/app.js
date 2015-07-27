@@ -1,3 +1,5 @@
+//set strict mode, for safety
+"use strict";
 //setting global variables for use in the game
 var life = 3;
 var score = 0;
@@ -48,8 +50,8 @@ Enemy.prototype.update = function(dt) {
     if(this.y-80 < player.y && this.y+80 > player.y) {
         if(this.x-70 < player.x && this.x+70 > player.x) {
             playerDead();
-        };
-    };
+        }
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -112,7 +114,7 @@ var Player = function() {
     this.alive = true;
 };
 Player.prototype.update = function(dt) {
-if(player.y <= 50){
+if(this.y <= 50){
     reachWater();
     }
 };
@@ -174,12 +176,12 @@ function playerDead(){
     if(life<0) {gameOver();}
     resetPlayerPosition();
     screenLife(life);
-    life--
+    life--;
 }
 //replace player and add point when player reaches water
 function reachWater(){
     resetPlayerPosition();
-    score++
+    score++;
     screenScore(score);
 }
 //Reset game when lives reaches 0
@@ -208,11 +210,11 @@ function gameReset() {
 }
 //Update the life counter
 function screenLife(life){
-    var element = document.getElementById("lives");
+    var element = document.getElementById("live");
     element.innerHTML = "Lives: "+life;
 }
 //Update the score counter
 function screenScore(score) {
-    var element = document.getElementById("score");
+    var element = document.getElementById("scor");
     element.innerHTML = "Score: "+score;
 }

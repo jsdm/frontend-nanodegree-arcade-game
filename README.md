@@ -1,5 +1,5 @@
 Instructions for playing this game:
-Got to https://github.com/jsdm/frontend-nanodegree-arcade-game and press the "Download Zip" button. Unzip the file, open the folder and doubleclick on the index.html file.
+Go to https://github.com/jsdm/frontend-nanodegree-arcade-game and press the "Download Zip" button. Unzip the file, open the folder and doubleclick on the index.html file.
 
 Use the arrowkeys to move the player around.
 

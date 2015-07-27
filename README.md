@@ -1,3 +1,12 @@
+Instructions for playing this game:
+Got to https://github.com/jsdm/frontend-nanodegree-arcade-game and press the "Download Zip" button. Unzip the file, open the folder and doubleclick on the index.html file.
+
+Use the arrowkeys to move the player around.
+
+The purpose of the game is to get the princess to the other side of the pebbles and reach the water. When reaching the water you get a point, visible in the "score" counter at the top, and the princess is transferred to the starting position and you have to reach the water again. If you get touched by the bugs you die. A live is subtracted, visible in the "lives" counter. when all 3 lives are used the game is over.
+
+To start a new game, please click the "reset" button.
+
 frontend-nanodegree-arcade-game
 ===============================
 

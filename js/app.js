@@ -49,7 +49,7 @@ Enemy.prototype.update = function(dt) {
     //Collision detection
     if(this.y-80 < player.y && this.y+80 > player.y) {
         if(this.x-70 < player.x && this.x+70 > player.x) {
-            playerDead();
+            player.playerDead();
         }
     }
 };
@@ -115,7 +115,7 @@ var Player = function() {
 };
 Player.prototype.update = function(dt) {
 if(this.y <= 50){
-    reachWater();
+    this.reachWater();
     }
 };
 
@@ -142,6 +142,31 @@ Player.prototype.handleInput = function(key) {
             break;
     }
 };
+
+
+//replace player and add point when player reaches water
+Player.prototype.reachWater = function(){
+    this.x = 200;
+    this.y = 475;
+    score++;
+    screenScore(score);
+};
+
+//Reset player position and subtract a life when player touches enemies
+Player.prototype.playerDead = function(){
+    if(life<0) {this.gameOver();}
+    this.x = 200;
+    this.y = 475;
+    life--;
+    screenLife(life);
+};
+
+//Reset game when lives reaches 0
+Player.prototype.gameOver = function(){
+    allEnemies.length = 0;
+    life=3;
+    gameOn = false;
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [
@@ -166,30 +191,7 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
-//player start position
-function resetPlayerPosition(){
-    player.x = 200;
-    player.y = 475;
-}
-//Reset player position and subtract a life when player touches enemies
-function playerDead(){
-    if(life<0) {gameOver();}
-    resetPlayerPosition();
-    screenLife(life);
-    life--;
-}
-//replace player and add point when player reaches water
-function reachWater(){
-    resetPlayerPosition();
-    score++;
-    screenScore(score);
-}
-//Reset game when lives reaches 0
-function gameOver() {
-    allEnemies.length = 0;
-    life=3;
-    gameOn = false;
-}
+
 //Function to use for resetting the game when clicking the reset button
 function gameReset() {
     enemyY = [60, 143, 226, 309];
@@ -201,7 +203,8 @@ function gameReset() {
     new EnemyBack(),
     new EnemyFastest()
     ];
-    resetPlayerPosition();
+    player.x = 200;
+    player.y = 475;
     gameOn = true;
     life = 3;
     score = 0;

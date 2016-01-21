@@ -35,7 +35,6 @@ var Enemy = function() {
     this.y = randEnemyArraY[0];
     this.speed = 100;
 };
-
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
@@ -53,7 +52,6 @@ Enemy.prototype.update = function(dt) {
         }
     }
 };
-
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
